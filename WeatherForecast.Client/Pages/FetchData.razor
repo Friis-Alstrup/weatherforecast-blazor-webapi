@@ -1,0 +1,33 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+@using WeatherForecast.Client.Data
+@using WeatherForecast.Models
+@inject ForecastService ForecastService
+
+@if (forecast == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h1>@city</h1>
+    <h4>@forecast.temperature</h4>
+    <h5>@forecast.description</h5>
+}
+
+@code {
+    private Root? forecast;
+
+    private string city = "Copenhagen";
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecast = await ForecastService.GetForecast(city);
+    }
+    private void HandleValidSubmit() 
+    {
+
+    }
+}
