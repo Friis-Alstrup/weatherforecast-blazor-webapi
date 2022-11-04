@@ -15,6 +15,26 @@ else
     <h1>@city</h1>
     <h4>@forecast.temperature</h4>
     <h5>@forecast.description</h5>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Temperature</th>
+                <th scope="col">wind</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (Forecast forecast in forecast.forecast) {
+            <tr>
+                <td>@forecast.day</td>
+                <td>@forecast.temperature</td>
+                <td>@forecast.wind</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
 }
 
 @code {
